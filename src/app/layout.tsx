@@ -1,18 +1,22 @@
-import Link from "next/link";
+// app/layout.tsx
 import "./../styles/globals.css";
+import Navbar from "../components/layout/Navbar";
+import { Inter } from "next/font/google";
 
 export const metadata = {
   title: "iFarmer Assignment",
 };
 
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+});
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${inter.variable} font-sans`}>
       <body>
-        <nav className="flex gap-4 p-4 bg-gray-100">
-          <Link href="/assignment-1">Assignment-1</Link>
-          <Link href="/assignment-2">Assignment-2</Link>
-        </nav>
+        <Navbar />
         <main>{children}</main>
       </body>
     </html>
