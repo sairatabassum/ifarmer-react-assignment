@@ -6,7 +6,7 @@ import { Box, Gamepad, SunLight, Trophy } from 'iconoir-react';
 import cn from '../../../utils/cn';
 
 import {
-  getLastRound, getPlayerName,
+  getPlayerName,
   getWinnerId,
   isCurrentRoundComplete,
   isDrawRound,

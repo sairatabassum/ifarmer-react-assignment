@@ -110,3 +110,29 @@ body {
 .shadow-secondary{
   box-shadow: var(--shadow-secondary);
 }
+
+@keyframes drawLine {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes drawLineVertical {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
+.animate-draw-line {
+  animation: drawLine 0.5s ease-out forwards;
+}
+
+.animate-draw-vertical {
+  animation: drawLineVertical 0.5s ease-out forwards;
+}
