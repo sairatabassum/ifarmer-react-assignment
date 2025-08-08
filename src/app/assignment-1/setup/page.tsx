@@ -6,7 +6,9 @@ import { useRouter } from "next/navigation";
 import { Play, Group } from "iconoir-react";
 import cn from "../../../utils/cn";
 import { playerSetupSchema, type PlayerSetupForm } from "../schemas/playerSetupSchemas";
-import type { PlayerField, PlayerSetupProps } from "../types/playerField";
+import type { PlayerField} from "../types/playerField";
+import { useAppDispatch } from "../../../hooks/redux";
+import { startNewMatch } from "../../../redux/slices/gameSlice";
 
 const fields: PlayerField[] = [
     {
@@ -27,8 +29,9 @@ const fields: PlayerField[] = [
     },
 ];
 
-export default function PlayerSetupPage({ onStart }: PlayerSetupProps) {
+export default function PlayerSetupPage() {
     const router = useRouter();
+    const dispatch = useAppDispatch();
 
     const {
         register,
@@ -40,9 +43,14 @@ export default function PlayerSetupPage({ onStart }: PlayerSetupProps) {
     });
 
     const onSubmit = (data: PlayerSetupForm) => {
-        localStorage.setItem("players", JSON.stringify(data));
+        dispatch(
+            startNewMatch({
+                player1Name: data.player1,
+                player2Name: data.player2,
+            })
+        );
         router.push("/assignment-1/game");
-    };
+      };
 
     return (
         <div className="min-h-screen bg-background flex items-center justify-center p-4">

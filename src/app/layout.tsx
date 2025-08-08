@@ -1,7 +1,7 @@
-// app/layout.tsx
 import "./../styles/globals.css";
 import Navbar from "../components/layout/Navbar";
 import { Inter } from "next/font/google";
+import { Providers } from "../providers/ReduxProvider";
 
 export const metadata = {
   title: "iFarmer Assignment",
@@ -16,8 +16,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${inter.variable} font-sans`}>
       <body>
-        <Navbar />
-        <main>{children}</main>
+        <Providers> 
+          <Navbar />
+          <main>{children}</main>
+        </Providers>
       </body>
     </html>
   );

@@ -10,10 +10,3 @@ export type PlayerField = {
   focus: string;
   error?: FieldError;
 };
-
-
-
-
-export interface PlayerSetupProps {
-  onStart: () => void;
-}
