@@ -25,55 +25,47 @@ const Pagination = ({ total, limit, currentPage, onPageChange }: {
 
     const getPageNumbers = () => {
         const pages = [];
-        if (totalPages <= 5) {
-            for (let i = 1; i <= totalPages; i++) {
-                pages.push(i);
-            }
-        } else {
-            pages.push(1);
-            if (currentPage > 3) pages.push('...');
-            if (currentPage > 2) pages.push(currentPage - 1);
-            pages.push(currentPage);
-            if (currentPage < totalPages - 1) pages.push(currentPage + 1);
-            if (currentPage < totalPages - 2) pages.push('...');
-            pages.push(totalPages);
+        for (let i = 1; i <= totalPages; i++) {
+            pages.push(i);
         }
-        return [...new Set(pages)]; 
+        return pages;
     };
 
     return (
-        <div className="flex items-center justify-center space-x-2 p-4 bg-[#FFF5F0] rounded-xl shadow-md">
+        <div className="flex items-center justify-between p-4 bg-orange-50 rounded-xl shadow-md w-full">
             <span className="text-sm text-gray-600">Page {currentPage} of {totalPages}</span>
-            <button
-                onClick={() => onPageChange(currentPage - 1)}
-                disabled={currentPage === 1}
-                className="p-2 rounded-lg bg-white disabled:bg-gray-200 disabled:cursor-not-allowed hover:bg-gray-100 transition-colors"
-            >
-                &lt;
-            </button>
-            {getPageNumbers().map((page, index) => (
+            <div className="flex items-center space-x-1">
                 <button
-                    key={index}
-                    onClick={() => typeof page === 'number' && onPageChange(page)}
-                    className={`p-2 rounded-lg transition-colors ${page === currentPage
-                        ? 'bg-[#E9967A] text-white font-bold'
-                        : 'bg-white hover:bg-gray-100 text-gray-700'
-                        } ${typeof page !== 'number' && 'cursor-default'}`}
-                    disabled={typeof page !== 'number'}
+                    onClick={() => onPageChange(currentPage - 1)}
+                    disabled={currentPage === 1}
+                    className="p-3 rounded-lg bg-white text-black disabled:bg-gray-100 disabled:cursor-not-allowed hover:bg-gray-200 transition-colors"
                 >
-                    {page}
+                    &lt;
                 </button>
-            ))}
-            <button
-                onClick={() => onPageChange(currentPage + 1)}
-                disabled={currentPage >= totalPages}
-                className="p-2 rounded-lg bg-white disabled:bg-gray-200 disabled:cursor-not-allowed hover:bg-gray-100 transition-colors"
-            >
-                &gt;
-            </button>
+                {getPageNumbers().map((page) => (
+                    <button
+                        key={page}
+                        onClick={() => onPageChange(page)}
+                        className={`px-4 py-3 rounded-lg transition-colors font-semibold ${page === currentPage
+                                ? 'bg-orange-600 text-white shadow-md'
+                                : 'bg-white hover:bg-gray-100 text-gray-700'
+                            }`}
+                    >
+                        {page}
+                    </button>
+                ))}
+                <button
+                    onClick={() => onPageChange(currentPage + 1)}
+                    disabled={currentPage >= totalPages}
+                    className="p-3 rounded-lg bg-white text-black disabled:bg-gray-100 disabled:cursor-not-allowed hover:bg-gray-200 transition-colors"
+                >
+                    &gt;
+                </button>
+            </div>
         </div>
     );
 };
+  
 
 export default function ProductListPage() {
     const [products, setProducts] = useState<Product[]>([]);

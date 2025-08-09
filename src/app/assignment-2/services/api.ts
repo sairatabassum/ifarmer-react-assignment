@@ -1,5 +1,7 @@
 // services/apiClient.ts
 import axios from 'axios';
+import { Product } from '../types/product';
+import { ProductFormData } from '../types/productForm';
 
 const apiClient = axios.create({
     baseURL: 'https://api.escuelajs.co/api/v1',
@@ -24,3 +26,23 @@ export const getCategories = async () => {
     const response = await apiClient.get('/categories');
     return response.data;
 };
+
+
+export const getProductById = async (id: number): Promise<Product> => {
+    const response = await apiClient.get(`/products/${id}`);
+    return response.data;
+  };
+
+export const createProduct = async (productData: ProductFormData): Promise<Product> => {
+    const response = await apiClient.post('/products', productData);
+    return response.data;
+};
+
+export const updateProduct = async (id: number, productData: ProductFormData): Promise<Product> => {
+    const response = await apiClient.put(`/products/${id}`, productData);
+    return response.data;
+};
+
+export const deleteProduct = async (id: number): Promise<void> => {
+    await apiClient.delete(`/products/${id}`);
+  };

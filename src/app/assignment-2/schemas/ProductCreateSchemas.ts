@@ -1,7 +1,7 @@
 import { z } from 'zod';
 
 export const productSchema = z.object({
-    productTitle: z
+    title: z
         .string()
         .nonempty({ message: "Product title is required." })
         .min(3, { message: "Product title must be at least 3 characters long." })
@@ -9,8 +9,8 @@ export const productSchema = z.object({
     price: z
         .number()
         .min(0.01, { message: "Price must be a positive number." }),
-    category: z
-        .string()
+    categoryId: z
+        .number()
         .min(1, { message: "Please select a category." }),
     description: z
         .string()

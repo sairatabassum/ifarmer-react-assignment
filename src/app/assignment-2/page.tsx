@@ -1,7 +1,5 @@
-export default function Assignment2Page() {
-    return (
-        <div>
-            <h1>Welcome to Assignment 2</h1>
-        </div>
-    );
+import { redirect } from "next/navigation";
+
+export default function Assignment1Page() {
+    redirect("/assignment-2/products");
 }
