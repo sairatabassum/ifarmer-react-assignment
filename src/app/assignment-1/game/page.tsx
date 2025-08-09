@@ -62,7 +62,7 @@ const Game = () => {
       {isGameOver && !isDraw && <CelebrationEmojiRain />}
       {isGameOver && <VictoryScreen />}
 
-      {/* {showResultModal && (
+      {showResultModal && (
         <RoundResultModal
           winnerName={isDraw ? null : roundWinnerName}
           onClose={handleResultModalClose}
@@ -74,7 +74,7 @@ const Game = () => {
           round={match.running_round + 1} // upcoming round
           onClose={handleRoundModalClose}
         />
-      )} */}
+      )}
 
       <div className="max-w-4xl mx-auto space-y-6 animate-fade-in">
         <div className="text-center">
