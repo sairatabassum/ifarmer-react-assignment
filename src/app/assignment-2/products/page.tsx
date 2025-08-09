@@ -6,6 +6,7 @@ import { Category, Product } from '../types/product';
 import { getCategories,getProducts } from '../services/api';
 import { ProductCard } from '../../../components/product/ProductCard';
 import { DeleteConfirmationModal } from '../../../components/product/ProductDeleteModal';
+import cn from '../../../utils/cn';
 
 const debounce = (func: (...args: any[]) => void, delay: number) => {
     let timeoutId: NodeJS.Timeout;
@@ -46,14 +47,17 @@ const Pagination = ({ total, limit, currentPage, onPageChange }: {
                     <button
                         key={page}
                         onClick={() => onPageChange(page)}
-                        className={`px-4 py-3 rounded-lg transition-colors font-semibold ${page === currentPage
-                                ? 'bg-orange-600 text-white shadow-md'
-                                : 'bg-white hover:bg-gray-100 text-gray-700'
-                            }`}
+                        className={cn(
+                            "px-4 py-3 rounded-lg transition-colors font-semibold",
+                            page === currentPage
+                                ? "bg-orange-600 text-white shadow-md"
+                                : "bg-white hover:bg-gray-100 text-gray-700"
+                        )}
                     >
                         {page}
                     </button>
                 ))}
+
                 <button
                     onClick={() => onPageChange(currentPage + 1)}
                     disabled={currentPage >= totalPages}
@@ -200,10 +204,12 @@ export default function ProductListPage() {
                                 <li key={category.id}>
                                     <button
                                         onClick={() => handleCategoryClick(category.id.toString())}
-                                        className={`w-full text-left p-3 rounded-lg transition-colors duration-200 ${selectedCategory === category.id.toString()
-                                            ? 'bg-[#E9967A] text-white font-semibold shadow-inner'
-                                            : 'bg-white text-gray-700 hover:bg-gray-100'
-                                            }`}
+                                        className={cn(
+                                            "w-full text-left p-3 rounded-lg transition-colors duration-200 cursor-pointer",
+                                            selectedCategory === category.id.toString()
+                                                ? "bg-[#E9967A] text-white font-semibold shadow-inner"
+                                                : "bg-white text-gray-700 hover:bg-gray-100"
+                                        )}
                                     >
                                         {category.name}
                                     </button>
@@ -211,6 +217,7 @@ export default function ProductListPage() {
                             ))}
                         </ul>
                     </div>
+
                 </aside>
             </div>
             {showDeleteModal && productToDelete && (

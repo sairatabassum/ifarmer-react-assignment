@@ -114,7 +114,7 @@ const GameBoard: React.FC = () => {
             className={cn(
               winningLineBase,
               winningLineType.startsWith('row') && horizontalLine,
-              winningLineType === 'row-0' && 'top-[18%]',
+              winningLineType === 'row-0' && 'top-[15%]',
               winningLineType === 'row-1' && 'top-1/2 lg:-translate-y-5',
               winningLineType === 'row-2' && 'bottom-[19%] -translate-y-1.5',
 
@@ -124,8 +124,8 @@ const GameBoard: React.FC = () => {
               winningLineType === 'col-2' && 'right-[19%]',
 
               (winningLineType === 'diag-1' || winningLineType === 'diag-2') && diagonalLine,
-              winningLineType === 'diag-1' && '-rotate-[135deg]  lg:-rotate-[132deg]',
-              winningLineType === 'diag-2' && 'rotate-[135deg] lg:rotate-[132deg]'
+              winningLineType === 'diag-1' && '-rotate-[135deg]  lg:-rotate-[127deg] lg:-translate-y-3.5 ',
+              winningLineType === 'diag-2' && 'rotate-[135deg] lg:rotate-[127deg] lg:-translate-y-3.5'
             )}
           />
         )}
