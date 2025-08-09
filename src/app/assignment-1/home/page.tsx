@@ -1,7 +1,6 @@
-"use client";
 
 import { ArrowLeft, Gamepad, Trophy } from "iconoir-react";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 import { Button } from "../../../components/common/Button";
 
 // Game Rules Card
@@ -60,52 +59,45 @@ const GameRules = () => (
 );
 
 // Action Buttons Section
-const ActionButtons = ({
-  onSetup,
-  onLeaderboard,
-}: {
-  onSetup: () => void;
-  onLeaderboard: () => void;
-}) => (
+const ActionButtons = () => (
   <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
-    <Button
-      onClick={onSetup}
-      size="lg"
-      className="w-full bg-gradient-primary text-primary-foreground shadow-glow transition-transform duration-200 hover:scale-105 sm:w-auto"
+    <Link
+      href="/assignment-1/setup"
+      className="w-full sm:w-auto"
     >
-      <Gamepad className="mr-2 h-5 w-5" />
-      New Game
-    </Button>
-    <Button
-      onClick={onLeaderboard}
-      size="lg"
-      variant="outline"
-      className="w-full border-border/20 transition-transform duration-200 hover:scale-105 hover:border-secondary/50 hover:bg-secondary/20 sm:w-auto"
+      <Button
+        size="lg"
+        className="w-full bg-gradient-primary text-primary-foreground shadow-glow transition-transform duration-200 hover:scale-105"
+      >
+        <Gamepad className="mr-2 h-5 w-5" />
+        New Game
+      </Button>
+    </Link>
+
+    <Link
+      href="/assignment-1/leaderboard"
+      className="w-full sm:w-auto"
     >
-      <ArrowLeft className="mr-2 h-5 w-5 -scale-x-100" />
-      View Leaderboard
-    </Button>
+      <Button
+        size="lg"
+        variant="outline"
+        className="w-full border-border/20 transition-transform duration-200 hover:scale-105 hover:border-secondary/50 hover:bg-secondary/20"
+      >
+        <ArrowLeft className="mr-2 h-5 w-5 -scale-x-100" />
+        View Leaderboard
+      </Button>
+    </Link>
   </div>
 );
 
+
 const Home = () => {
-  const router = useRouter();
-
-  const handleSetUpGame = () => {
-    router.push("/assignment-1/setup");
-  };
-  const handleLeaderboard = () => {
-    router.push("/assignment-1/leaderboard");
-  };
-
   return (
     <div className="flex min-h-screen items-center justify-center bg-background p-4 font-sans">
       <div className="w-full max-w-3xl mx-auto">
         <div className="mt-10 space-y-6">
           <GameRules />
           <ActionButtons
-            onSetup={handleSetUpGame}
-            onLeaderboard={handleLeaderboard}
           />
         </div>
       </div>

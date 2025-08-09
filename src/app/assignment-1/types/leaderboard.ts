@@ -34,7 +34,6 @@ export interface MatchHistoryProps {
 }
 
 export interface ActionButtonsProps {
-  onHome: () => void;
   onClear: () => void;
   hasGame: boolean;
 }

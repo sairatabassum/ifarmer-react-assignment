@@ -9,17 +9,6 @@ export interface PlayerInfo {
     total_lose: number;
 }
 
-export interface LeaderboardEntry {
-    name: string;
-    total_score: number;
-    total_win: number;
-    total_loss: number;
-    total_draw: number;
-}
-
-export interface Leaderboard {
-    [playerId: string]: LeaderboardEntry;
-}
 
 export interface Round {
     round_num: number;
@@ -63,6 +52,6 @@ export interface GameState {
     total_matches: number;
     matches: Match[];
     current_match: Match | null;
-    leaderboard: Leaderboard;
     current_turn: PlayerID | null;
+    
 }

@@ -134,18 +134,23 @@ const GameStatus = () => {
       </section>
 
       {/* Match Overview */}
-      <section className="bg-card rounded-xl border border-border/20 p-5 shadow-sm">
-        <div className="flex items-center gap-2 text-foreground font-semibold">
+      <section className="bg-card rounded-xl border border-border/20 p-5 shadow-lg">
+        <div className="flex items-center gap-2 text-foreground font-semibold mb-4">
           <Box className="h-5 w-5 text-primary" />
           Match Overview
         </div>
-        <div className="mt-3 flex justify-between items-center text-sm">
-          <span className="text-muted-foreground">Current Round:</span>
-          <Badge variant="outline" className="bg-primary/10 text-primary border-primary/20">
-            {currentRound} of {match.total_rounds}
-          </Badge>
+
+        <div className="flex flex-col items-center gap-3">
+          <span className="text-muted-foreground text-sm">Current Round</span>
+          <div className="flex items-end gap-2">
+            <span className="text-6xl font-extrabold text-primary animate-pop">
+              {currentRound}
+            </span>
+            <span className="text-lg text-muted-foreground">/ {match.total_rounds}</span>
+          </div>
         </div>
       </section>
+
     </div>
   );
 };

@@ -80,7 +80,7 @@ export default function PlayerSetupPage() {
                                             field.color
                                         )}
                                     >
-                                        <span className="text-2xl">{field.icon}</span> {field.label}
+                                        {field.label} <span className="text-2xl">({field.icon})</span>
                                     </label>
                                     <input
                                         id={field.id}
