@@ -122,7 +122,7 @@ export default function ProductListPage() {
         debounce((value: string) => {
             setSearchTerm(value);
             setCurrentPage(1);
-        }, 400),
+        }, 300),
         []
     );
 
