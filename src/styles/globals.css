@@ -67,6 +67,19 @@
   --color-sidebar-accent-foreground: rgb(250, 250, 250);
   --color-sidebar-border: rgb(44, 46, 51);
   --color-sidebar-ring: rgb(71, 169, 57);
+
+
+  /* Product */
+   --color-product-background-1: rgb(255, 220, 220); 
+   --color-product-background-2: rgb(255, 242, 235); 
+   --color-product-background-3: rgb(255, 232, 205); 
+   --color-product-background-4: rgb(255, 214, 186); 
+   --color-product-brown: rgb(237, 163, 90); 
+   --color-product-text: rgb(23, 49, 62); 
+   --color-product-rose: #E9967A; 
+ 
+   --color-product-foreground: rgb(50, 50, 50); 
+
 }
 
 body {

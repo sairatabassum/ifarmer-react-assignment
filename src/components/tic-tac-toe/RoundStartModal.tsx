@@ -15,7 +15,7 @@ const RoundStartModal: React.FC<RoundStartModalProps> = ({ round, onClose }) => 
         const timer = setTimeout(() => {
             setIsVisible(false);
             onClose?.(); // call after hiding
-        }, 1500);
+        }, 1000);
 
         return () => clearTimeout(timer);
     }, [onClose]);

@@ -1,5 +1,5 @@
-// src/app/assignment-1/layout.tsx
 import React from 'react';
+import SidebarLayout from '../../components/product/Sidebar';
 
 export default function Assignment2Layout({
     children,
@@ -7,8 +7,8 @@ export default function Assignment2Layout({
     children: React.ReactNode;
 }) {
     return (
-        <div>
+        <SidebarLayout>
             {children}
-        </div>
+        </SidebarLayout>
     );
 }
