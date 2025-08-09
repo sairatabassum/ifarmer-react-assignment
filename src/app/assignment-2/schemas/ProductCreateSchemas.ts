@@ -3,6 +3,7 @@ import { z } from 'zod';
 export const productSchema = z.object({
     productTitle: z
         .string()
+        .nonempty({ message: "Product title is required." })
         .min(3, { message: "Product title must be at least 3 characters long." })
         .max(100, { message: "Product title cannot exceed 100 characters." }),
     price: z

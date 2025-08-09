@@ -1,7 +1,7 @@
 'use client'
 
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Upload, Xmark } from 'iconoir-react'; // Import icons
+import { Upload, Xmark } from 'iconoir-react';
 import { useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { Button } from '../../../components/common/Button';
@@ -9,14 +9,12 @@ import cn from '../../../utils/cn';
 import { Product, productSchema } from '../schemas/ProductCreateSchemas';
 import { FileUploadProps, FormInputProps } from '../types/productForm';
 
-
 const categories = [
     'Electronics',
     'Clothing',
     'Books',
     'Home & Garden',
 ];
-
 
 const FormInput = ({ label, name, register, error, type = 'text', placeholder, step, min, as = 'input', options }: FormInputProps) => (
     <div>
@@ -29,15 +27,13 @@ const FormInput = ({ label, name, register, error, type = 'text', placeholder, s
                 {...register(name)}
                 rows={4}
                 placeholder={placeholder}
-                className={`w-full p-3 border rounded-lg text-[#8B4513] focus:outline-none focus:ring-2 focus:ring-[#E9967A] resize-y ${error ? 'border-red-500' : 'border-gray-300'
-                    }`}
+                className={`w-full p-3 border rounded-lg text-[#8B4513] focus:outline-none focus:ring-2 focus:ring-[#E9967A] resize-y ${error ? 'border-red-500' : 'border-gray-300'}`}
             />
         ) : as === 'select' ? (
             <select
                 id={name}
                 {...register(name)}
-                className={`w-full p-3 border rounded-lg text-[#8B4513] focus:outline-none focus:ring-2 focus:ring-[#E9967A] ${error ? 'border-red-500' : 'border-gray-300'
-                    }`}
+                className={`w-full p-3 border rounded-lg text-[#8B4513] focus:outline-none focus:ring-2 focus:ring-[#E9967A] ${error ? 'border-red-500' : 'border-gray-300'}`}
             >
                 <option value="" disabled>Select a category</option>
                 {options?.map((option) => (
@@ -52,8 +48,7 @@ const FormInput = ({ label, name, register, error, type = 'text', placeholder, s
                 placeholder={placeholder}
                 step={step}
                 min={min}
-                className={`w-full p-3 border rounded-lg text-[#8B4513] focus:outline-none focus:ring-2 focus:ring-[#E9967A] ${error ? 'border-red-500' : 'border-gray-300'
-                    }`}
+                className={`w-full p-3 border rounded-lg text-[#8B4513] focus:outline-none focus:ring-2 focus:ring-[#E9967A] ${error ? 'border-red-500' : 'border-gray-300'}`}
             />
         )}
         {error && (
@@ -61,8 +56,6 @@ const FormInput = ({ label, name, register, error, type = 'text', placeholder, s
         )}
     </div>
 );
-
-
 
 const FileUpload = ({ onFileChange, selectedFiles, onRemoveFile, error }: FileUploadProps) => (
     <div>
@@ -80,8 +73,7 @@ const FileUpload = ({ onFileChange, selectedFiles, onRemoveFile, error }: FileUp
             />
             <label
                 htmlFor="file-upload"
-                className={`w-full flex flex-col items-center justify-center p-6 border-2 border-dashed rounded-lg cursor-pointer text-[#8B4513] hover:border-[#E9967A] transition-colors duration-200 ${error ? 'border-red-500' : 'border-gray-300'
-                    }`}
+                className={`w-full flex flex-col items-center justify-center p-6 border-2 border-dashed rounded-lg cursor-pointer text-[#8B4513] hover:border-[#E9967A] transition-colors duration-200 ${error ? 'border-red-500' : 'border-gray-300'}`}
             >
                 <Upload className="h-8 w-8 mb-2 text-[#8B4513]" />
                 <span className="text-sm font-medium text-center">Drag and drop images here, or click to browse.</span>
@@ -158,7 +150,7 @@ export default function ProductForm() {
         alert('Form submitted successfully!');
     };
 
-    const hasErrors = Object.keys(errors).length > 0 || fileError;
+    const hasErrors = Object.keys(errors).length > 0 || !!fileError;
 
     return (
         <div className="flex items-center justify-center p-4 md:p-8">
@@ -213,16 +205,14 @@ export default function ProductForm() {
                     <Button
                         type="submit"
                         size="lg"
-                        disabled={!!hasErrors}
+                        disabled={hasErrors}
                         className={cn(
                             "w-full font-bold shadow-md transition-colors duration-200",
-                            hasErrors ? "bg-gray-400  cursor-not-allowed" : "bg-product-rose hover:bg-product-rose-hover"
+                            hasErrors ? "bg-gray-400 cursor-not-allowed" : "bg-product-rose hover:bg-product-rose-hover"
                         )}
                     >
                         Create Product
                     </Button>
-
-
 
                 </form>
             </div>
